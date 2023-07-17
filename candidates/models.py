@@ -20,14 +20,14 @@ class Candidate(models.Model):
 
 
 
-class Certificate(PeriodMixin):
+class Certificate(models.Model):
     institut = models.CharField(max_length=100)
     title = models.CharField(max_length=50)
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='candidates/certifications')
+    picture = models.ImageField(upload_to='candidates/certifications', blank=True, null=True)
     obtention_date = models.DateField()
-    
+    link = models.URLField(blank=True, null=True)
     
 class Experience(PeriodMixin):
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)

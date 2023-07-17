@@ -10,4 +10,4 @@ class CertificateListSerializer(serializers.ModelSerializer):
 class CertificatDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificate
-        fields = 'id', 'title', 'description', 'link', 'picture', 'obtention_date'
+        fields = 'id', 'title', 'description', 'link', 'picture', 'obtention_date', 'candidate'

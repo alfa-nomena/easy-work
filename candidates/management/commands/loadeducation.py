@@ -14,13 +14,12 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.clean_db()
         faker = Faker()
-        for candidate in tqdm(Candidate.objects.filter(user__in = User.objects.filter(is_staff=False, is_active=True)), "Creating new candidates"):
+        for candidate in tqdm(Candidate.objects.filter(user__in = User.objects.filter(is_staff=False, is_active=True)), "Creating new educations"):
             for _ in range(random.randrange(10)):
                 Education.objects.create(
                     candidate = candidate,
                     institut = faker.text(20),
                     diplom = faker.text(50),
-                    description = do_or_empty(faker.url),
-                    start = faker.date(),
-                    end = faker.date()
+                    description = do_or_empty(faker.text,100),
+                    obtention_date = faker.date()
                 )

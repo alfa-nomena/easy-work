@@ -14,7 +14,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.clean_db()
         faker = Faker()
-        for _ in tqdm(range(random.randrange(100, 230)), "Creating new candidates"):
+        for _ in tqdm(range(random.randrange(20, 50)), "Creating new candidates"):
             while True:
                 username = faker.user_name()
                 if not User.objects.filter(username=username).exists():
