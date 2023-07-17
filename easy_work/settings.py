@@ -12,9 +12,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'candidates',
     'enterprises',
-    'jobs'
+    'jobs',
+    'candidates',
 ]
 
 MIDDLEWARE = [

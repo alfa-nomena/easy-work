@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 from enterprises.models import Enterprise
 from jobs.models import Skill
+from mixins.period_mixin import PeriodMixin
+
+
 
 class Candidate(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -17,25 +20,31 @@ class Candidate(models.Model):
     about = models.TextField(blank=True, null=True)
     skill = models.ManyToManyField(Skill)
 
-class Experience(models.Model):
+
+class Certificate(PeriodMixin):
+    institut = models.CharField(max_length=100)
+    title = models.CharField(max_length=50)
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
-    start = models.DateField()
-    end = models.DateField()
+    about = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='candidates/certifications')
+    obtention_date = models.DateField()
+    
+    
+class Experience(PeriodMixin):
+    candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     about = models.TextField(blank=True, null=True)
 
-class Certificate(models.Model):
-    institut = models.CharField(max_length=100)
-    title = models.CharField(max_length=50)
-    start = models.DateField()
-    end = models.DateField()
+
+class Education(PeriodMixin):
+    institut = models.CharField(max_length=50)
+    diplom = models.CharField(max_length=50)
+    about = models.TextField()
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
-    about = models.TextField(blank=True, null=True)
     
 class Site(models.Model):
-    candidate = models.ForeignKey(Candidate, on_delete=models.PROTECT, blank=True, null=True)
-    enterprise = models.ForeignKey(Enterprise, on_delete=models.PROTECT, blank=True, null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    about = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     link = models.URLField()
