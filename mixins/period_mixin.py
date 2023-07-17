@@ -8,4 +8,4 @@ class PeriodMixin(models.Model):
     start = models.DateField()
     end = models.DateField()
     def period(self):
-        return f"{self.start}" + (f'- {self.end}' if self.end else '')
+        return f"{self.start}" + (f' to {self.end}' if self.end else '')

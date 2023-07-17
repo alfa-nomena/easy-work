@@ -24,7 +24,7 @@ class Certificate(PeriodMixin):
     institut = models.CharField(max_length=100)
     title = models.CharField(max_length=50)
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
-    about = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='candidates/certifications')
     obtention_date = models.DateField()
     
