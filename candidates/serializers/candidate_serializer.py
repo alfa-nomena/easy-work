@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from candidates.models import Candidate
 from mixins.user_serializer import UserSerializer
-from .experience_serializer import ExperiencesListSerializer
+from .experience_serializer import ExperiencesListCandidateSerializer
 from .certificate_serializer import CertificateListSerializer
 from .education_serializer import EducationListSerializer
 from jobs.serializers.skill_serializer import SkillSerializer
@@ -18,7 +18,7 @@ class CandidateListSerializer(serializers.ModelSerializer):
     
 class CandidateDetailSerializer(serializers.ModelSerializer):
     user = UserSerializer()
-    experience_set = ExperiencesListSerializer(many=True, read_only=True)
+    experience_set = ExperiencesListCandidateSerializer(many=True, read_only=True)
     certificate_set = CertificateListSerializer(many=True, read_only=True)
     skill_set = SkillSerializer(many=True, read_only=True)
     education_set = EducationListSerializer(many=True, read_only=True)
