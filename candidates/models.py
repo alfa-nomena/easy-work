@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from enterprises.models import Enterprise
-from jobs.models import Skill
 from mixins.period_mixin import PeriodMixin
 
 
@@ -18,7 +17,7 @@ class Candidate(models.Model):
     address = models.CharField(max_length=50,blank=True, null=True)
     title = models.CharField( max_length=100,blank=True, null=True)
     about = models.TextField(blank=True, null=True)
-    skill = models.ManyToManyField(Skill)
+
 
 
 class Certificate(PeriodMixin):
@@ -40,7 +39,7 @@ class Experience(PeriodMixin):
 class Education(PeriodMixin):
     institut = models.CharField(max_length=50)
     diplom = models.CharField(max_length=50)
-    about = models.TextField()
+    description = models.TextField()
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
     
 class Site(models.Model):

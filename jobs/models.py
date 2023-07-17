@@ -1,5 +1,5 @@
 from django.db import models
-
+from candidates.models import Candidate
 from enterprises.models import Enterprise
 
 TYPES = [
@@ -16,8 +16,7 @@ EXPERIENCES = [
     ('any', 'Any')
 ]
 
-class Skill(models.Model):
-    title = models.CharField(max_length=50)
+
 
 class Job(models.Model):
     title = models.CharField(max_length=50)
@@ -28,8 +27,12 @@ class Job(models.Model):
     address = models.CharField(max_length=50,blank=True, null=True)
     contract = models.CharField(max_length=50, choices=TYPES, default='CDI')
     experience = models.CharField(max_length=50, choices=EXPERIENCES, default='any')
-    skill = models.ManyToManyField(Skill)
     
+
+class Skill(models.Model):
+    title = models.CharField(max_length=50)
+    candidates = models.ManyToManyField(Candidate)
+    jobs = models.ManyToManyField(Job)
     
 class Detail(models.Model):
     class Meta:

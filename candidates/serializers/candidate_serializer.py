@@ -8,6 +8,8 @@ from jobs.serializers.skill_serializer import SkillSerializer
 from .site_serializers import SiteListSerializer
 from django.contrib.auth.models import User
 
+
+
 class CandidateListSerializer(serializers.ModelSerializer):
     user = UserSerializer()
     class Meta:
@@ -16,14 +18,14 @@ class CandidateListSerializer(serializers.ModelSerializer):
     
 class CandidateDetailSerializer(serializers.ModelSerializer):
     user = UserSerializer()
-    experiences = ExperiencesListSerializer(many=True, read_only=True)
-    certificats = CertificateListSerializer(many=True, read_only=True)
-    skills = SkillSerializer(many=True, read_only=True)
-    educations = EducationListSerializer(many=True, read_only=True)
-    sites = SiteListSerializer(many=True, read_only=True)
+    experience_set = ExperiencesListSerializer(many=True, read_only=True)
+    certificate_set = CertificateListSerializer(many=True, read_only=True)
+    skill_set = SkillSerializer(many=True, read_only=True)
+    education_set = EducationListSerializer(many=True, read_only=True)
+    site_set = SiteListSerializer(many=True, read_only=True)
     class Meta:
         model = Candidate
-        fields = ('id', 'user', 'picture', 'cv', 'github', 'linkedin', 'phone1', 'phone2', 'address', 'title', 'about', 'skills', 'educations', 'sites', 'experiences', 'certificats')
+        fields = ('id', 'user', 'picture', 'cv', 'github', 'linkedin', 'phone1', 'phone2', 'address', 'title', 'about', 'skill_set', 'education_set', 'site_set', 'experience_set', 'certificate_set')
         depth = 2
     
     def create(self, validated_data):
