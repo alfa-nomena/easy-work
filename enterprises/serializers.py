@@ -10,7 +10,12 @@ class EnterpriseListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enterprise
         fields = 'id', 'picture', 'title', 'size', 'name', 'email'
-    
+
+class EnterpriseMinimalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Enterprise
+        fields = 'picture', 'title', 'name'
+
 class EnterpriseDetailSerializer(serializers.ModelSerializer):
     user = UserSerializer(write_only=True)
     site_set = SiteListSerializer(many=True, read_only=True)

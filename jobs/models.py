@@ -23,12 +23,22 @@ class Job(models.Model):
     enterprise = models.ForeignKey(Enterprise, on_delete=models.PROTECT)
     date_posted = models.DateField(auto_now=True)
     date_last_modified = models.DateField(auto_now_add=True)
-    type = models.CharField(max_length=50, choices=TYPES, default='ft')
+    type_value = models.CharField(max_length=50, choices=TYPES, default='ft')
     address = models.CharField(max_length=50,blank=True, null=True)
-    contract = models.CharField(max_length=50, choices=CONTRACTS, default='CDI')
-    experience = models.CharField(max_length=50, choices=EXPERIENCES, default='any')
+    contract_value = models.CharField(max_length=50, choices=CONTRACTS, default='CDI')
+    experience_value = models.CharField(max_length=50, choices=EXPERIENCES, default='any')
     
-
+    @property
+    def contract(self):
+        return self.get_contract_value_display()
+    
+    @property
+    def experience(self):
+        return self.get_experience_value_display()
+    
+    @property
+    def type(self):
+        return self.get_type_value_display()
 class Skill(models.Model):
     title = models.CharField(max_length=50)
     candidates = models.ManyToManyField(Candidate)
