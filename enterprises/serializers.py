@@ -18,9 +18,6 @@ class EnterpriseDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enterprise
         fields = 'id', 'picture', 'title', 'size', 'description', 'address', 'date_founded', 'user','site_set'
-        extra_kwargs = {
-            'user':{'write_only':True}
-        }
         
         
     def create(self, validated_data):

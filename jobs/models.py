@@ -25,7 +25,7 @@ class Job(models.Model):
     date_last_modified = models.DateField(auto_now_add=True)
     type = models.CharField(max_length=50, choices=TYPES, default='ft')
     address = models.CharField(max_length=50,blank=True, null=True)
-    contract = models.CharField(max_length=50, choices=TYPES, default='CDI')
+    contract = models.CharField(max_length=50, choices=CONTRACTS, default='CDI')
     experience = models.CharField(max_length=50, choices=EXPERIENCES, default='any')
     
 
