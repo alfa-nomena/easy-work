@@ -21,5 +21,6 @@ router.register(r'^enterprises/(?P<enterprise_id>\d+)/jobs', JobViewset, basenam
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('api/jobs/', JobViewset.as_view({'get': 'list_all_jobs'}), name='all-jobs')
 ]

@@ -3,6 +3,7 @@
 </script>
 <template>
   <HeaderComponent/>
+  <JobListComponentVue/>
 </template>
 
 <style lang="scss">
@@ -29,20 +30,14 @@ nav {
 }
 </style>
 <script>
+import JobListComponentVue from './components/JobListComponent.vue'
   export default {
     name: 'App',
-    components: [HeaderComponent],
+    components: [HeaderComponent, JobListComponentVue],
     data(){
       return {
         candidates: []
       }
-    },
-    mounted() {
-      fetch('http://127.0.0.1:8000/api/candidates')
-      .then(res=>res.json())
-      .then(data => {
-        this.candidates = data
-      })
     }
   }
 </script>

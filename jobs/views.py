@@ -1,8 +1,8 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, response, status
 from .serializers.job_serializers import JobListSerializer, JobDetailSerializer
 from .models import Job
-from candidates.models import Candidate
 from rest_framework.decorators import action
+from rest_framework.pagination import PageNumberPagination
 
 class JobViewset(viewsets.ModelViewSet):
     serializer_class = JobDetailSerializer
@@ -14,6 +14,11 @@ class JobViewset(viewsets.ModelViewSet):
         return super().get_serializer_class()
     
     def get_queryset(self):
-        if self.kwargs['enterprise_id']:
+        if self.kwargs.get('enterprise_id'):
             return Job.objects.filter(enterprise=self.kwargs['enterprise_id'])
         return super().get_queryset()
+    
+    @action(detail=False)
+    def list_all_jobs(self, *args, **kwargs):
+        list_queryset= self.paginate_queryset(Job.objects.all())
+        return self.get_paginated_response(JobListSerializer(list_queryset, many=True).data)
