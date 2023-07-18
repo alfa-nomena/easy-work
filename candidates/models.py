@@ -26,15 +26,14 @@ class Certificate(models.Model):
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
     picture = models.ImageField(upload_to='candidates/certifications', blank=True, null=True)
-    link = models.URLField(blank=True, null=True)
     obtention_date = models.DateField()
-    
+    link = models.URLField(blank=True, null=True)
     
 class Experience(PeriodMixin):
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    about = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
 
 class Education(PeriodMixin):
