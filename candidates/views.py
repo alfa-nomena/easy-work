@@ -1,10 +1,9 @@
-from enterprises.models import Enterprise
 from rest_framework import viewsets
 from .models import Candidate, Education, Certificate, Site, Experience
 from .serializers.candidate_serializer import CandidateListSerializer, CandidateDetailSerializer
 from .serializers.education_serializer import EducationListSerializer, EducationDetailSerializer
 from .serializers.certificate_serializer import CertificatDetailSerializer, CertificateListSerializer
-from .serializers.site_serializers import SiteDetailCandidateSerializer, SiteListSerializer
+from .serializers.site_serializers import SiteDetailSerializer, SiteListSerializer
 from .serializers.experience_serializer import ExperiencesDetailSerializer, ExperiencesListSerializer
 
 
@@ -47,8 +46,8 @@ class CertificateViewSet(viewsets.ModelViewSet):
         request.data['candidate'] = kwargs['candidate_id']
         return super().create(request, *args, **kwargs)
 
-class SiteViewSet(viewsets.ModelViewSet):
-    serializer_class = SiteDetailCandidateSerializer
+class SiteCandidateViewSet(viewsets.ModelViewSet):
+    serializer_class = SiteDetailSerializer
     
     def get_queryset(self):
         return Site.objects.filter(owner=Candidate.objects.get(pk=self.kwargs['candidate_id']).user)

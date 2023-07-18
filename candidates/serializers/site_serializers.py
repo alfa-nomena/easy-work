@@ -7,7 +7,7 @@ class SiteListSerializer(serializers.ModelSerializer):
         model = Site
         fields = 'id', 'title', 'link'
 
-class SiteDetailCandidateSerializer(serializers.ModelSerializer):
+class SiteDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Site
         fields = 'id', 'title', 'link', 'description', 'owner'
