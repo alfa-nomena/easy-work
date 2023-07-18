@@ -15,11 +15,11 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.clean_db()
         faker = Faker()
-    for candidate in tqdm(Candidate.objects.filter(user__in = User.objects.filter(is_staff=False, is_active=True)), "Creating new sites for candidates."):
-            for _ in range(random.randrange(10)):
-                Site.objects.create(
-                    owner = candidate.user,
-                    title = faker.text(20),
-                    description = do_or_empty(faker.text,300),
-                    link = faker.url()
-                )
+        for candidate in tqdm(Candidate.objects.filter(user__in = User.objects.filter(is_staff=False, is_active=True)), "Creating new sites for candidates."):
+                for _ in range(random.randrange(10)):
+                    Site.objects.create(
+                        owner = candidate.user,
+                        title = faker.text(20),
+                        description = do_or_empty(faker.text,300),
+                        link = faker.url()
+                    )

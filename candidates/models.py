@@ -31,7 +31,6 @@ class Certificate(models.Model):
     
 class Experience(PeriodMixin):
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE)
-    enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
 

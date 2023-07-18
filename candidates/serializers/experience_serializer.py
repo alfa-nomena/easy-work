@@ -2,14 +2,14 @@ from rest_framework import serializers
 from candidates.models import Experience
 # from .candidate_serializer import CandidateListSerializer
 
-class ExperiencesListCandidateSerializer(serializers.ModelSerializer):
+class ExperiencesListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
-        fields = 'id','period', 'title', 'enteprise'
-class ExperiencesDetailCandidateSerializer(serializers.ModelSerializer):
+        fields = 'id','period', 'title'
+class ExperiencesDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
-        fields = 'id','period', 'title', 'enteprise', 'description', 'start', 'end', "candidate"
+        fields = 'id','period', 'title', 'description', 'start', 'end', "candidate"
         extra_kwargs = {
             'start': {'write_only': True},
             'end': {'write_only': True},
