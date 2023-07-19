@@ -14,7 +14,7 @@ class EnterpriseListSerializer(serializers.ModelSerializer):
 class EnterpriseMinimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enterprise
-        fields = 'picture', 'title', 'name'
+        fields = 'picture_url', 'title', 'name'
 
 class EnterpriseDetailSerializer(serializers.ModelSerializer):
     user = UserSerializer(write_only=True)

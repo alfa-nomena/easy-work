@@ -5,7 +5,8 @@ from candidates.views import CandidateViewSet, EducationViewSet, CertificateView
 from enterprises.views import EnterpriseViewSet, SiteEnterpriseViewSet
 from jobs.views import JobViewset
 from django.urls import include
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 router = SimpleRouter()
@@ -23,4 +24,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/jobs/', JobViewset.as_view({'get': 'list_all_jobs'}), name='all-jobs')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

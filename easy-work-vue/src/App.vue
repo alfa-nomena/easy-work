@@ -1,9 +1,12 @@
 <script setup>
   import HeaderComponent from './components/HeaderComponent.vue'
+  import JobListMinimalComponent from './components/JobListMinimalComponent.vue';
 </script>
 <template>
-  <HeaderComponent/>
-  <JobListComponentVue/>
+  <div>
+    <HeaderComponent/>
+    <JobListMinimalComponent/>
+  </div>
 </template>
 
 <style lang="scss">
@@ -30,10 +33,9 @@ nav {
 }
 </style>
 <script>
-import JobListComponentVue from './components/JobListComponent.vue'
   export default {
     name: 'App',
-    components: [HeaderComponent, JobListComponentVue],
+    components: [HeaderComponent, JobListMinimalComponent],
     data(){
       return {
         candidates: []

@@ -42,6 +42,9 @@ class Job(models.Model):
     @property
     def enterprise_display(self):
         return self.enterprise
+
+    def __str__(self) -> str:
+        return f"{self.enterprise} {self.title}" 
 class Skill(models.Model):
     title = models.CharField(max_length=50)
     candidates = models.ManyToManyField(Candidate)
