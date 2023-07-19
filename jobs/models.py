@@ -39,6 +39,9 @@ class Job(models.Model):
     @property
     def type(self):
         return self.get_type_value_display()
+    @property
+    def enterprise_display(self):
+        return self.enterprise
 class Skill(models.Model):
     title = models.CharField(max_length=50)
     candidates = models.ManyToManyField(Candidate)

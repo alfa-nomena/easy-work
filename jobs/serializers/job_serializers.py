@@ -10,13 +10,14 @@ class JobListSerializer(serializers.ModelSerializer):
         model = Job
 
 class JobDetailSerializer(serializers.ModelSerializer):
-    enterprise = EnterpriseMinimalSerializer(read_only=True)
+    enterprise_display = EnterpriseMinimalSerializer(read_only=True)
     class Meta:
-        fields = 'id', 'title', 'enterprise', 'date_posted', 'date_last_modified', 'type', 'address', 'contract', 'experience', 'experience_value', 'type_value', 'contract_value'
+        fields = 'id', 'title', 'enterprise', 'date_posted', 'date_last_modified', 'type', 'address', 'contract', 'experience', 'experience_value', 'type_value', 'contract_value', 'enterprise_display'
         model = Job
         extra_kwargs = {
             'experience_value': {'write_only': True},
             'type_value': {'write_only': True},
-            'contract_value': {'write_only': True}
+            'contract_value': {'write_only': True},
+            'enterprise': {'write_only': True}
             
         }

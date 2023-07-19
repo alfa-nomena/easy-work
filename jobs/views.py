@@ -22,3 +22,7 @@ class JobViewset(viewsets.ModelViewSet):
     def list_all_jobs(self, *args, **kwargs):
         list_queryset= self.paginate_queryset(Job.objects.all())
         return self.get_paginated_response(JobListSerializer(list_queryset, many=True).data)
+
+    def create(self, request, *args, **kwargs):
+        request.data['enterprise'] = kwargs['enterprise_id']
+        return super().create(request, *args, **kwargs)
