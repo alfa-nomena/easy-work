@@ -5,8 +5,9 @@ from jobs.models import Job
 
 
 class JobListSerializer(serializers.ModelSerializer):
+    enterprise_display = EnterpriseMinimalSerializer(read_only=True)
     class Meta:
-        fields = 'id', 'title', 'enterprise', 'date_posted', 'type', 'address', 'contract', 'experience', 
+        fields = 'id', 'title', 'enterprise_display', 'date_posted', 'type', 'address', 'contract', 'experience', 
         model = Job
 
 class JobDetailSerializer(serializers.ModelSerializer):
