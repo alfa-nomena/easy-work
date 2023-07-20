@@ -6,7 +6,7 @@ from rest_framework.pagination import PageNumberPagination
 
 class JobViewset(viewsets.ModelViewSet):
     serializer_class = JobDetailSerializer
-    queryset = Job.objects.all()
+    queryset = Job.objects.all().order_by('-date_posted', 'title')
     
     def get_serializer_class(self):
         if self.action=='list':
@@ -15,12 +15,12 @@ class JobViewset(viewsets.ModelViewSet):
     
     def get_queryset(self):
         if self.kwargs.get('enterprise_id'):
-            return Job.objects.filter(enterprise=self.kwargs['enterprise_id'])
+            return Job.objects.filter(enterprise=self.kwargs['enterprise_id']).order_by('-date_posted', 'title')
         return super().get_queryset()
     
     @action(detail=False)
     def list_all_jobs(self, *args, **kwargs):
-        list_queryset= self.paginate_queryset(Job.objects.all())
+        list_queryset= self.paginate_queryset(Job.objects.all().order_by('-date_posted', 'title'))
         return self.get_paginated_response(JobListSerializer(list_queryset, many=True).data)
 
     def create(self, request, *args, **kwargs):

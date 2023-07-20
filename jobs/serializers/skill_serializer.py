@@ -5,4 +5,4 @@ from jobs.models import Skill
 class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
-        fields = 'id', 'title'
+        fields = 'title', 'id'

@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from candidates.serializers.experience_serializer import ExperiencesListSerializer
 from .models import Enterprise
 from mixins.user_serializer import UserSerializer
 from candidates.serializers.site_serializers import SiteListSerializer
@@ -9,12 +8,12 @@ from candidates.serializers.site_serializers import SiteListSerializer
 class EnterpriseListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enterprise
-        fields = 'id', 'picture', 'title', 'size', 'name', 'email'
+        fields = 'id', 'picture', 'title', 'size', 'name', 'email', 'description'
 
 class EnterpriseMinimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enterprise
-        fields = 'id', 'picture', 'title', 'name'
+        fields = 'id', 'picture', 'title', 'name', 'description'
 
     
 class EnterpriseDetailSerializer(serializers.ModelSerializer):
