@@ -15,7 +15,10 @@ EXPERIENCES = [
     ('expert', '>10 years'),
     ('any', 'Any')
 ]
-
+LOCATIONS = [
+    ('on site', 'On site'),
+    ('remote', 'Remote')
+]
 
 
 class Job(models.Model):
@@ -27,7 +30,7 @@ class Job(models.Model):
     address = models.CharField(max_length=50,blank=True, null=True)
     contract_value = models.CharField(max_length=50, choices=CONTRACTS, default='CDI')
     experience_value = models.CharField(max_length=50, choices=EXPERIENCES, default='any')
-    
+    location = models.CharField(max_length=10, choices=LOCATIONS, default='on site')
     @property
     def contract(self):
         return self.get_contract_value_display()

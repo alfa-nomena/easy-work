@@ -1,13 +1,13 @@
 <template>
   <nav>
     <div>
-      <a id="logo" href="index.html">
+      <router-link to="/jobs/">
         <img src="../assets/logo-header.png" alt="">
-      </a>
+      </router-link>
     </div>
     <ul class="nav nav-tabs">
       <li v-for="(nav,i) in navs" :key="i" class="nav-item" @click.self="click_nav_button(nav)">
-        <a :href="nav.url" class="nav-link" :class="{'nav-link':nav.is_active}">{{ nav.display_text }}</a> 
+        <router-link :to="nav.url" class="nav-link" :class="{'nav-link':nav.is_active}">{{ nav.display_text }}</router-link> 
       </li>
     </ul> 
   </nav>
@@ -20,28 +20,28 @@ export default {
     return {
       navs: [
         {
-          url: '#',
+          url: '/jobs/',
           is_active: true,
           display_text: 'Home',
         },
         {
-          url: '#',
+          url: '/jobs/',
           is_active: false,
           display_text: 'Companies',
         },
         {
-          url: '#',
+          url: '/jobs/',
           is_active: false,
           display_text: 'Candidates',
         },
         {
-          url: '#',
+          url: '/jobs/',
           is_active: false,
           display_text: 'Jobs',
         }
         ,
         {
-          url: '#',
+          url: '/jobs/',
           is_active: false,
           display_text: 'Login',
         }
@@ -77,6 +77,9 @@ h3 {
 ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+
 }
 li {
   display: inline-block;

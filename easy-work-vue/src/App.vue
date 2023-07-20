@@ -1,11 +1,11 @@
 <script setup>
   import HeaderComponent from './components/HeaderComponent.vue'
-  import JobListMinimalComponent from './components/JobListMinimalComponent.vue';
+  import JobListComponent from './components/Jobs/JobListComponent.vue';
 </script>
 <template>
   <div>
     <HeaderComponent/>
-    <JobListMinimalComponent/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -35,11 +35,6 @@ nav {
 <script>
   export default {
     name: 'App',
-    components: [HeaderComponent, JobListMinimalComponent],
-    data(){
-      return {
-        candidates: []
-      }
-    }
+    components: [HeaderComponent, JobListComponent],
   }
 </script>

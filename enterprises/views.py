@@ -13,6 +13,11 @@ class EnterpriseViewSet(viewsets.ModelViewSet):
             return EnterpriseListSerializer
         return super().get_serializer_class()
     
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['request'] = self.request
+        print(context)
+        return context
 
 class SiteEnterpriseViewSet(viewsets.ModelViewSet):
     serializer_class = SiteDetailSerializer

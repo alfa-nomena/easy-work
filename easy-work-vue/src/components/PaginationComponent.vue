@@ -1,11 +1,11 @@
 <template>
     <nav>
         <ul class="pagination">
-            <li v-if="previous" class="page-item">
-                <a class="page-link" @click.prevent="click_previous">Pevious</a>
+            <li v-if="previous" class="page-item" @click.prevent="click_previous">
+                <a class="page-link" :href="previous">Pevious</a>
             </li>
-            <li v-if="next" class="page-item">
-                <a class="page-link" @click.prevent="click_next">Next</a>
+            <li v-if="next" class="page-item" @click.prevent="click_next">
+                <a class="page-link" :href="next">Next</a>
             </li>
         </ul>
     </nav>

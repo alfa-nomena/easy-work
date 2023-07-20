@@ -22,9 +22,6 @@ class Enterprise(models.Model, HasResponsible):
     date_founded = models.DateField()
     
     @property
-    def picture_url(self):
-        return self.picture.url if self.picture else None
-    @property
     def site_set(self):
         return self.user.site_set.all()
     
