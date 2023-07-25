@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <router-link :to="`/enterprises/${job.enterprise_display.id}/jobs/${job.id}`" @click="apply(job)">
         <div class="logo">
             <img :src="'http://127.0.0.1:8000' + job.enterprise_display.picture || '#'" :alt="job.enterprise_display.name">
         </div>
@@ -13,9 +13,9 @@
             <p>Posted : {{ job.date_posted }}</p>
         </div>
         <div class="apply">
-            <router-link :to="`/enterprises/${job.enterprise_display.id}/jobs/${job.id}`" @click="apply(job)"  class="btn btn-danger">Postuler</router-link>
+            <button class="btn btn-danger">Apply</button>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script>
@@ -81,5 +81,8 @@ img{
 }
 button{
     background-color: #da0833;
+}
+a{
+    text-decoration: none;
 }
 </style>

@@ -5,9 +5,9 @@ from jobs.models import Role, Profil
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
-        fields = '__all__'
+        fields = 'title', 'id'
 
 class ProfilSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profil
-        fields = '__all__'
+        fields = 'title', 'id'

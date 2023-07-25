@@ -12,8 +12,8 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.clean_db()
         faker = Faker()
-        for job in tqdm(Job.objects.all()):
-            for _ in range(random.randrange(10,156)), "Creating new profils for all jobs":
+        for job in tqdm(Job.objects.all(), "Creating new profils for all jobs"):
+            for _ in range(random.randrange(10,15)):
                 Profil.objects.create(
                     job=job,
                     title = faker.text(50)
