@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ListAllJobsView from '../views/ListAllJobsView.vue'
 import ListAllEnterprisesView from '../views/ListAllEnterprisesView.vue'
 import DetailJobView from '../views/DetailJobView.vue'
+import DetailEnterpriseView from '../views/DetailEnterpriseView.vue'
 
 
 
@@ -26,6 +27,11 @@ const routes = [
         path: '/enterprises',
         name: 'ListAllEnterprisesView',
         component: ListAllEnterprisesView
+    },
+    {
+        path: '/enterprises/:enterprise_id',
+        name: 'DetailEnterpriseView',
+        component: DetailEnterpriseView
     },
 ]
 
