@@ -1,18 +1,32 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import JobListComponent from '../components/Jobs/JobListComponent.vue';
-import JobDetailComponent from '../components/Jobs/JobDetailComponent.vue'
+import HomeView from '../views/HomeView.vue'
+import ListAllJobsView from '../views/ListAllJobsView.vue'
+import ListAllEnterprisesView from '../views/ListAllEnterprisesView.vue'
+import DetailJobView from '../views/DetailJobView.vue'
+
+
 
 const routes = [
     {
-        path: '/jobs/',
-        name: 'JobListComponent',
-        component: JobListComponent,
+        path: '',
+        name: 'HomeView',
+        component: HomeView,
+    },
+    {
+        path: '/jobs',
+        name: 'ListAllJobsView',
+        component: ListAllJobsView
     },
     {
         path: '/enterprises/:enterprise_id/jobs/:job_id',
-        name: 'JobDetail',
-        component: JobDetailComponent
-    }
+        name: 'DetailJobView',
+        component: DetailJobView
+    },
+    {
+        path: '/enterprises',
+        name: 'ListAllEnterprisesView',
+        component: ListAllEnterprisesView
+    },
 ]
 
 const router = createRouter({

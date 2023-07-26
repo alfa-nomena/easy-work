@@ -30,8 +30,8 @@ class Command(BaseCommand):
             Enterprise.objects.create(
                 user = user,
                 title = faker.text(20),
-                description = do_or_empty(faker.text, 200),
-                size = random.choice(SIZES)[0],
+                description = do_or_empty(faker.text, 500),
+                size_value = random.choice(SIZES)[0],
                 address = faker.address(),
                 date_founded = faker.date()
             )

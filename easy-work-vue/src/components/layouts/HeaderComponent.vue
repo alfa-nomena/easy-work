@@ -2,7 +2,7 @@
   <nav>
     <div>
       <router-link to="/jobs/">
-        <img src="../assets/logo-header.png" alt="">
+        <img src="../../assets/logo-header.png" alt="">
       </router-link>
     </div>
     <ul class="nav nav-tabs">

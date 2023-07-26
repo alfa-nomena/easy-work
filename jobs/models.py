@@ -4,9 +4,10 @@ from enterprises.models import Enterprise
 
 TYPES = [
     ('ft', 'Full time'),
-    ('pt', 'Part time')
+    ('pt', 'Part time'),
+    ('fl', 'Freelance')
 ]
-CONTRACTS = [(contract, contract) for contract in ['CDI', 'CDD']]
+CONTRACTS = [(contract.lower(), contract) for contract in ['CDI', 'CDD']]
 EXPERIENCES = [
     ('fresher', '< 1 years'),
     ('junior', '1-2 years'),
@@ -23,7 +24,7 @@ LOCATIONS = [
 
 class Job(models.Model):
     title = models.CharField(max_length=50)
-    enterprise = models.ForeignKey(Enterprise, on_delete=models.PROTECT)
+    enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
     date_posted = models.DateField(auto_now=True)
     date_last_modified = models.DateField(auto_now_add=True)
     type_value = models.CharField(max_length=50, choices=TYPES, default='ft')

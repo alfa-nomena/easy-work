@@ -8,12 +8,8 @@ from candidates.serializers.site_serializers import SiteListSerializer
 class EnterpriseListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enterprise
-        fields = 'id', 'picture', 'title', 'size', 'name', 'email', 'description'
+        fields = 'id', 'picture', 'title', 'size', 'name', 'email', 'description', 'date_founded'
 
-class EnterpriseMinimalSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Enterprise
-        fields = 'id', 'picture', 'title', 'name', 'description'
 
     
 class EnterpriseDetailSerializer(serializers.ModelSerializer):

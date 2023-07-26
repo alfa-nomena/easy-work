@@ -1,19 +1,19 @@
 from rest_framework import serializers
-from enterprises.serializers import EnterpriseMinimalSerializer
+from enterprises.serializers import EnterpriseListSerializer
 from jobs.models import Job
 from .skill_serializer import SkillSerializer
 from .detail_serializer import RoleSerializer, ProfilSerializer
 
 
 class JobListSerializer(serializers.ModelSerializer):
-    enterprise_display = EnterpriseMinimalSerializer(read_only=True)
+    enterprise_display = EnterpriseListSerializer(read_only=True)
     class Meta:
         fields = 'id', 'title', 'enterprise_display', 'date_posted', 'type', 'address', 'contract', 'experience'
         model = Job
         ordering = ['date_posted', 'title']
 
 class JobDetailSerializer(serializers.ModelSerializer):
-    enterprise_display = EnterpriseMinimalSerializer(read_only=True)
+    enterprise_display = EnterpriseListSerializer(read_only=True)
     skill_set = SkillSerializer(many=True, read_only=True)
     role_set = RoleSerializer(many=True, read_only=True)
     profil_set = ProfilSerializer(many=True, read_only=True)

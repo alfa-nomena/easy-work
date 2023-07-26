@@ -1,6 +1,6 @@
 <script setup>
 import JobListCardComponent from './JobListCardComponent.vue'
-import PaginationComponent from '../PaginationComponent.vue'
+import PaginationComponent from '../layouts/PaginationComponent.vue'
 </script>
 
 <template>

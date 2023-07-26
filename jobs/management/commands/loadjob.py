@@ -19,8 +19,8 @@ class Command(BaseCommand):
                 Job.objects.create(
                     title = faker.text(50),
                     enterprise = enterprise,
-                    type = random.choice(TYPES)[0],
+                    type_value = random.choice(TYPES)[0],
                     address = faker.address(),
-                    contract = random.choice(CONTRACTS)[0],
-                    experience = random.choice(EXPERIENCES)[0]
+                    contract_value = random.choice(CONTRACTS)[0],
+                    experience_value = random.choice(EXPERIENCES)[0]
                 )
