@@ -3,7 +3,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5phand#5oe47f$o0u!46bkzhepenrb$1#83t))4k3v6y473_xr'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://hackibosy2.pythonanywhere.com/']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -103,6 +104,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
+    "https://hackibosy2.pythonanywhere.com/",
 ]
 
 REST_FRAMEWORK = {
