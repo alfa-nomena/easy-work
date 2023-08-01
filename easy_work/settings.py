@@ -105,7 +105,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://127.0.0.1:8080",
-    "https://hackibosy2.pythonanywhere.com/",
+    "https://hackibosy2.pythonanywhere.com",
 ]
 
 REST_FRAMEWORK = {
