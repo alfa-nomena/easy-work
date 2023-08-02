@@ -8,7 +8,7 @@ TYPES = [
     ('fl', 'Freelance')
 ]
 CONTRACTS = [(contract.lower(), contract) for contract in ['CDI', 'CDD']]
-EXPERIENCES = [
+EXPERIENCES_PERIODS = [
     ('fresher', '< 1 years'),
     ('junior', '1-2 years'),
     ('confirmed', '3-5 years'),
@@ -30,7 +30,7 @@ class Job(models.Model):
     type_value = models.CharField(max_length=50, choices=TYPES, default='ft')
     address = models.CharField(max_length=50,blank=True, null=True)
     contract_value = models.CharField(max_length=50, choices=CONTRACTS, default='CDI')
-    experience_value = models.CharField(max_length=50, choices=EXPERIENCES, default='any')
+    experience_value = models.CharField(max_length=50, choices=EXPERIENCES_PERIODS, default='any')
     location = models.CharField(max_length=10, choices=LOCATIONS, default='on site')
     @property
     def contract(self):

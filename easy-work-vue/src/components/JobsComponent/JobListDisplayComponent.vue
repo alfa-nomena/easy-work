@@ -12,7 +12,7 @@
                     <p><span class="company-name"><i class="fa fa-briefcase"></i>{{job.enterprise_display.title}}</span><span class="company-location"><i class="fa fa-map-marker"></i> {{job.address}}</span><span class="package"><i class="fa fa-money"></i>{{ job.contract }}</span></p>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-2">
+            <div class="col-md-2 col-sm-2 button">
                 <router-link :to="`enterprises/${job.enterprise_display.id}/jobs/${job.id}`" class="btn view-job">View Job</router-link>
             </div>
         </div>
@@ -24,3 +24,8 @@
         props: ['job'],
     }
 </script>
+<style scoped>
+    div.button *{
+        background-color: #da0833;
+    }
+</style>

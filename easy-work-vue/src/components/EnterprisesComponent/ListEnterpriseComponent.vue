@@ -1,8 +1,7 @@
 <template>
-    <div class="companies" v-if="enterprises">
+    <div class="companies">
         <EnterpriseListDisplayComponent v-for="enterprise in enterprises" :key="enterprise.id" :enterprise="enterprise"/>
     </div>
-    <div v-else>Loading Enterprises</div>
 </template>
 
 <script setup>
@@ -17,9 +16,6 @@ export default {
         this.enterprises.forEach(enterprise => {
             enterprise.picture = enterprise.picture===null?require('../../assets/img/unknown.jpg'):'http://127.0.0.1:8000'+enterprise.picture
         });
-    },
-    mounted(){
-        console.log(this.enterprises)
     }
 }
 </script>

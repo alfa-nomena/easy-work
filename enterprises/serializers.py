@@ -6,9 +6,10 @@ from candidates.serializers.site_serializers import SiteListSerializer
 # from jobs.serializers import JobListSerializer
 
 class EnterpriseListSerializer(serializers.ModelSerializer):
+    picture = serializers.ImageField(max_length=None, use_url=True)
     class Meta:
         model = Enterprise
-        fields = 'id', 'picture', 'title', 'size', 'name', 'email', 'description', 'date_founded'
+        fields = 'id', 'picture', 'title', 'size', 'name', 'email', 'description', 'date_founded','address'
 
 
     

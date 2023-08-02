@@ -2,7 +2,7 @@
     <section class="main-banner">
         <div class="container">
             <div class="caption">
-                <h2>Build Your Career</h2>
+                <h2>Find your dream job</h2>
                 <form>
                     <fieldset>
                         <div class="col-md-4 col-sm-4 no-pad">
@@ -10,23 +10,14 @@
                         </div>
                         <div class="col-md-3 col-sm-3 no-pad">
                             <select class="selectpicker border-right">
-                                <option>Experience</option>
-                                <option>0 Year</option>
-                                <option>1 Year</option>
-                                <option>2 Year</option>
-                                <option>3 Year</option>
-                                <option>4 Year</option>
-                                <option>5 Year</option>
-                                <option>6 Year</option>
-                                <option>7 Year</option>
-                                <option>8 Year</option>
-                                <option>9 Year</option>
-                                <option>10 Year</option>
+                                <option value="" selected disabled hidden>Experiences</option>
+                                <option v-for="exp in experience_periods" :key="exp[0]">{{ exp[0].charAt(0).toUpperCase() + exp[0].slice(1) }} ({{ exp[1] }})</option>
                             </select>
                         </div>
                         <div class="col-md-3 col-sm-3 no-pad">
                             <select class="selectpicker">
-                                <option>Select Category</option>
+                                <option value="" disabled selected hidden>Categories</option>
+                                <option value="">Any</option>
                                 <option>Accounf & Finance</option>
                                 <option>Information & Technology</option>
                                 <option>Marketing</option>
@@ -44,11 +35,20 @@
 </template>
 <script>
     export default {
-        name: 'BannerComponent'
+        name: 'BannerComponent',
+        data(){
+            return {
+                skills: [],
+                experience_periods: []
+            }
+        },
+        async mounted(){
+            this.experience_periods = await( await fetch('http://127.0.0.1:8000/api/experience-periods/')).json()
+        }
     }
 </script>
-<style>
+<style scoped>
     .main-banner{
-        background: #242c36 url(../../assets/img/slider-01.jpg) no-repeat;
+        background: #242c36 url(../../assets/img/banner.jpeg) no-repeat;
     }
 </style>

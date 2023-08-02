@@ -1,6 +1,6 @@
 <template>
     <div class="companies">
-        <JobListDisplayComponent v-for="(job,i) in jobs" :key="i" :job="job"/>
+        <JobListDisplayComponent v-for="job in jobs" :key="job.id" :job="job"/>
     </div>
 </template>
 

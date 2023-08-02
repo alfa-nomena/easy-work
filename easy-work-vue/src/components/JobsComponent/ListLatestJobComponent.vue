@@ -1,7 +1,7 @@
 <template>
     <div class="row heading">
         <h2>Find Popular Jobs</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+        <p>Candidates that are being active lastely.</p>
     </div>
     <ListJobComponent :jobs="jobs" /> 
 </template>

@@ -4,7 +4,7 @@ from faker import Faker
 import random
 from enterprises.models import Enterprise
 from mixins.routines import do_or_empty
-from jobs.models import Job, TYPES, CONTRACTS, EXPERIENCES
+from jobs.models import Job, TYPES, CONTRACTS, EXPERIENCES_PERIODS
 
 class Command(BaseCommand):
     def clean_db(self):
@@ -22,5 +22,5 @@ class Command(BaseCommand):
                     type_value = random.choice(TYPES)[0],
                     address = faker.address(),
                     contract_value = random.choice(CONTRACTS)[0],
-                    experience_value = random.choice(EXPERIENCES)[0]
+                    experience_value = random.choice(EXPERIENCES_PERIODS)[0]
                 )

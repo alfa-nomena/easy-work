@@ -1,8 +1,7 @@
-from rest_framework import viewsets, response, status
+from rest_framework import viewsets, response
 from .serializers.job_serializers import JobListSerializer, JobDetailSerializer
-from .models import Job
+from .models import Job, EXPERIENCES_PERIODS
 from rest_framework.decorators import action
-from rest_framework.pagination import PageNumberPagination
 
 class JobViewset(viewsets.ModelViewSet):
     serializer_class = JobDetailSerializer
@@ -22,7 +21,11 @@ class JobViewset(viewsets.ModelViewSet):
     def list_all_jobs(self, *args, **kwargs):
         list_queryset= self.paginate_queryset(Job.objects.all().order_by('-date_posted', 'title'))
         return self.get_paginated_response(JobListSerializer(list_queryset, many=True).data)
-
+    
+    @action(detail=False)
+    def list_all_experience_periods(self, *args, **kwargs):
+        return response.Response(EXPERIENCES_PERIODS)
+    
     def create(self, request, *args, **kwargs):
         request.data['enterprise'] = kwargs['enterprise_id']
         return super().create(request, *args, **kwargs)

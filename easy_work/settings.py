@@ -4,7 +4,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5phand#5oe47f$o0u!46bkzhepenrb$1#83t))4k3v6y473_xr'
 DEBUG = True
 ALLOWED_HOSTS = [
-    'hackibosy2.pythonanywhere.com'
+    # 'hackibosy2.pythonanywhere.com',
+    "127.0.0.1",
+    "localhost"
 ]
 
 INSTALLED_APPS = [
