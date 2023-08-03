@@ -14,6 +14,10 @@ class EnterpriseViewSet(viewsets.ModelViewSet):
         qs = SectorSerializer(data=Sector.objects.all(), many=True)
         qs.is_valid()
         return Response(qs.data)
+
+    @action(detail=True)
+    def count_enterprises(self, *args, **kwargs):
+        return Response(Enterprise.objects.all().count())
     
     def get_serializer_class(self):
         if self.action=='list':

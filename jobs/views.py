@@ -39,6 +39,10 @@ class JobViewset(viewsets.ModelViewSet):
     def list_all_experience_periods(self, *args, **kwargs):
         return response.Response(EXPERIENCES_PERIODS)
     
+    @action(detail=True)
+    def count_jobs(self, *args, **kwargs):
+        return response.Response(Job.objects.all().count())
+    
     def create(self, request, *args, **kwargs):
         request.data['enterprise'] = kwargs['enterprise_id']
         return super().create(request, *args, **kwargs)

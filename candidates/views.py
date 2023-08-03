@@ -1,11 +1,11 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, response
 from .models import Candidate, Education, Certificate, Site, Experience
 from .serializers.candidate_serializer import CandidateListSerializer, CandidateDetailSerializer
 from .serializers.education_serializer import EducationListSerializer, EducationDetailSerializer
 from .serializers.certificate_serializer import CertificatDetailSerializer, CertificateListSerializer
 from .serializers.site_serializers import SiteDetailSerializer, SiteListSerializer
 from .serializers.experience_serializer import ExperiencesDetailSerializer, ExperiencesListSerializer
-
+from rest_framework.decorators import action
 
 
 class CandidateViewSet(viewsets.ModelViewSet):
@@ -16,6 +16,10 @@ class CandidateViewSet(viewsets.ModelViewSet):
         if self.action=='list':
             return CandidateListSerializer
         return super().get_serializer_class()
+    
+    @action(detail=True)
+    def count_candidates(self, *args, **kwargs):
+        return response.Response(Candidate.objects.all().count())
 
 class EducationViewSet(viewsets.ModelViewSet):
     serializer_class = EducationDetailSerializer

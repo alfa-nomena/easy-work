@@ -24,6 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/jobs/', JobViewset.as_view({'get': 'list_filtered_jobs'}), name='filtred-jobs'),
+    path('api/jobs/count', JobViewset.as_view({'get': 'count_jobs'}), name='count-jobs'),
     path('api/experience-periods/', JobViewset.as_view({'get': 'list_all_experience_periods'}), name='all-experiences-profil'),
+    path('api/enterprises/count', EnterpriseViewSet.as_view({'get': 'count_enterprises'}), name='count-enterprises'),
+    path('api/candidates/count', CandidateViewSet.as_view({'get': 'count_candidates'}), name='count-candidates'),
     path('api/sectors/', EnterpriseViewSet.as_view({'get': 'list_sectors'}), name='list-sectors'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
