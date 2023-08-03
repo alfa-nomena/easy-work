@@ -8,7 +8,6 @@ from django.contrib.auth.models import User
 
 class Command(BaseCommand):
     def clean_db(self):
-        print(Enterprise.objects.all())
         for enterprise in tqdm(Enterprise.objects.all(), 'Clean all Enterprises'):
             enterprise.delete()
                         

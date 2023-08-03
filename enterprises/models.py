@@ -30,3 +30,7 @@ class Enterprise(models.Model, HasResponsible):
     
     def __str__(self):
         return f"{self.name} - {self.title}"
+
+class Sector(models.Model):
+    title = models.CharField( max_length=100,blank=True, null=True)
+    enterprise = models.ManyToManyField(Enterprise)
