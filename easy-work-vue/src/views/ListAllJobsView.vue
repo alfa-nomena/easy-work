@@ -6,32 +6,23 @@
                 <p>Find your dream job in these jobs</p>
             </div>
             <ListJobComponent :jobs="jobs"/>
-            <nav>
-                <ul class="pagination">
-                    <li v-if="previous" class="page-item" @click.prevent="get_jobs(previous)">
-                        <a class="page-link" :href="previous">Previous</a>
-                    </li>
-                    <li v-if="next" class="page-item" @click.prevent="get_jobs(next)">
-                        <a class="page-link" :href="next">Next</a>
-                    </li>
-                </ul>
-            </nav>
+            <PaginationComponent :next="next" @click_next="get_jobs(next)"/>
         </div>
     </section>
 </template>
 
 <script setup>
 import ListJobComponent from '../components/JobsComponent/ListJobComponent.vue'
+import PaginationComponent from '@/components/layouts/PaginationComponent.vue';
 </script>
 <script>
 export default {
     name: 'HomeView',
-    components: [ ListJobComponent],
+    components: [ ListJobComponent, PaginationComponent],
     data(){
         return {
             jobs:[],
-            next: null,
-            previous: null
+            next: null
         }
     },
     async mounted(){
@@ -39,11 +30,12 @@ export default {
     },
     methods: {
         async get_jobs(url){
+            url +=url.includes('?')?'&':'?'
+            url += new URLSearchParams(this.$route.query)
             const data = await (await fetch(url)).json()
-            this.jobs = data.results
+            this.jobs = this.jobs.concat(data.results)
             this.next = data.next
-            this.previous = data.previous
-        }
+        },
     }
 }
 </script>

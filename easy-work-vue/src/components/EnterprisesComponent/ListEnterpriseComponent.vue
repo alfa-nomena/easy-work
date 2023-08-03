@@ -14,8 +14,10 @@ export default {
     components: [EnterpriseListDisplayComponent],
     updated(){
         this.enterprises.forEach(enterprise => {
-            enterprise.picture = enterprise.picture===null?require('../../assets/img/unknown.jpg'):'http://127.0.0.1:8000'+enterprise.picture
-        });
+            if (enterprise.picture===null){
+                enterprise.picture = require('../../assets/img/unknown.jpg')
+            }
+        })
     }
 }
 </script>

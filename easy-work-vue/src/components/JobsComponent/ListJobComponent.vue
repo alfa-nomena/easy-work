@@ -15,7 +15,9 @@ export default {
     updated(){
         this.jobs.forEach(job => {
             job.class_type = job.type.toLowerCase().split(' ').join('-')
-            job.enterprise_display.picture = job.enterprise_display.picture===null?require('../../assets/img/unknown.jpg'):'http://127.0.0.1:8000'+job.enterprise_display.picture
+            if (job.enterprise_display.picture===null){
+                job.enterprise_display.picture = require('../../assets/img/unknown.jpg')
+            }
         });
     }
 }

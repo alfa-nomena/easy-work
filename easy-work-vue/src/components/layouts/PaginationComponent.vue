@@ -1,11 +1,8 @@
 <template>
     <nav>
         <ul class="pagination">
-            <!-- <li v-if="previous" class="page-item">
-                <router-link @click.prevent="click_previous" class="page-link" :to="previous">Pevious</router-link>
-            </li> -->
             <li v-if="next" class="page-item">
-                <router-link @click.prevent="click_next" class="page-link" :to="next">Next</router-link>
+                <a @click.prevent="click_next" class="page-link">Next</a>
             </li>
         </ul>
     </nav>
@@ -19,9 +16,6 @@
             click_next(){
                 this.$emit('click_next')
             },
-            // click_previous(){
-            //     this.$emit('click_previous')
-            // }
         }
     }
 </script>

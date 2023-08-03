@@ -17,9 +17,11 @@
                         <li><a href="login.html">Login</a></li>
                         <li><a href="companies.html">Companies</a></li> 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Browse</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sectors</a>
                             <ul class="dropdown-menu animated fadeOutUp" style="display: none; opacity: 1;">
-                                <li class="active"><a href="browse-job.html">Browse Jobs</a></li>
+                                <li class="active">
+                                    <a href="browse-job.html">Browse Jobs</a>
+                                </li>
                                 <li><a href="company-detail.html">Job Detail</a></li>
                                 <li><a href="resume.html">Resume Detail</a></li>
                             </ul>

@@ -23,8 +23,7 @@ router.register(r'^enterprises/(?P<enterprise_id>\d+)/jobs', JobViewset, basenam
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/jobs/', JobViewset.as_view({'get': 'list_all_jobs'}), name='all-jobs'),
-    path('api/filtered-jobs/', JobViewset.as_view({'get': 'list_filtered_jobs'}), name='filtred-jobs'),
+    path('api/jobs/', JobViewset.as_view({'get': 'list_filtered_jobs'}), name='filtred-jobs'),
     path('api/experience-periods/', JobViewset.as_view({'get': 'list_all_experience_periods'}), name='all-experiences-profil'),
     path('api/sectors/', EnterpriseViewSet.as_view({'get': 'list_sectors'}), name='list-sectors'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

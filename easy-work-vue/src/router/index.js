@@ -16,7 +16,7 @@ const routes = [
     {
         path: '/jobs',
         name: 'ListAllJobsView',
-        component: ListAllJobsView
+        component: ListAllJobsView,
     },
     {
         path: '/enterprises/:enterprise_id/jobs/:job_id',

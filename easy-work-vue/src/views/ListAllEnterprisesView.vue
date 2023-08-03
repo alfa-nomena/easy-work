@@ -41,7 +41,6 @@ export default {
         async get_enterprises(url){
             const data = await (await fetch(url)).json()
             this.enterprises = this.enterprises.concat(data.results)
-            console.log(this.enterprises)
             this.next = data.next
         }
     }
