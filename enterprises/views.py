@@ -1,12 +1,19 @@
 from rest_framework import viewsets
-from .serializers import EnterpriseDetailSerializer, EnterpriseListSerializer
-from .models import Enterprise
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from .serializers import EnterpriseDetailSerializer, EnterpriseListSerializer, SectorSerializer
+from .models import Enterprise, Sector
 from candidates.serializers.site_serializers import SiteDetailSerializer, SiteListSerializer
 from candidates.models import Site
-
 class EnterpriseViewSet(viewsets.ModelViewSet):
     serializer_class = EnterpriseDetailSerializer
     queryset = Enterprise.objects.all()
+    
+    @action(detail=False)
+    def list_sectors(self, *args, **kwargs):
+        qs = SectorSerializer(data=Sector.objects.all(), many=True)
+        qs.is_valid()
+        return Response(qs.data)
     
     def get_serializer_class(self):
         if self.action=='list':
@@ -16,7 +23,6 @@ class EnterpriseViewSet(viewsets.ModelViewSet):
     def get_serializer_context(self):
         context = super().get_serializer_context()
         context['request'] = self.request
-        print(context)
         return context
 
 class SiteEnterpriseViewSet(viewsets.ModelViewSet):

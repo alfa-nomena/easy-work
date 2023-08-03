@@ -13,8 +13,7 @@ EXPERIENCES_PERIODS = [
     ('junior', '1-2 years'),
     ('confirmed', '3-5 years'),
     ('senior', '6-10 years'),
-    ('expert', '>10 years'),
-    ('any', 'Any')
+    ('expert', '>10 years')
 ]
 LOCATIONS = [
     ('on site', 'On site'),

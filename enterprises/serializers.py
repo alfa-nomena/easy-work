@@ -7,7 +7,7 @@ from candidates.serializers.site_serializers import SiteListSerializer
 class SectorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sector
-        fields = ['title']
+        fields = ['title', 'id']
 class EnterpriseListSerializer(serializers.ModelSerializer):
     picture = serializers.ImageField(max_length=None, use_url=True)
     sector_set = SectorSerializer(many=True)
