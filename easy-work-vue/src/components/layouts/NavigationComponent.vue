@@ -19,10 +19,10 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sectors</a>
                             <ul class="dropdown-menu animated fadeOutUp" style="display: none; opacity: 1;" v-if="sectors" id="sectors">
-                                <li v-for="sector in sectors" :key="sector.id">
-                                    <router-link to="">
+                                <li v-for="(sector,i) in sectors" :key="i">
+                                    <a :href="sector.href" :key="sector.id">
                                         {{ sector.title }}
-                                    </router-link>
+                                    </a>
                                 </li>
                             </ul>
                         </li>
@@ -40,13 +40,21 @@
             }
         },
         methods:{
-            fetch_sector(sector){
-
+            href_sector(sector){
+                return this.$router.resolve({
+                    name: 'ListAllJobsView',
+                    query: {
+                        sector: sector.title,
+                    }
+                }).href
             }
         },
         async mounted(){
-            this.sectors = await( await fetch('http://127.0.0.1:8000/api/sectors/')).json()
-            console.log(this.sectors)
+            const sectors = await( await fetch('http://127.0.0.1:8000/api/sectors/')).json()
+            sectors.forEach(sector=>{
+                sector.href = this.href_sector(sector)
+            })
+            this.sectors = sectors
         }
     }
 </script>
